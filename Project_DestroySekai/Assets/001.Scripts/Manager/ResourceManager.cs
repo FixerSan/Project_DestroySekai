@@ -58,7 +58,7 @@ public class ResourceManager
         return CheckLoaded<T>(_key);
     }
 
-    public void LoadAsyncAll<T>(string _label, Action<string,int,int> _progressCallback, Action _completedCallback) where T : Object
+    public void LoadAsyncAll<T>(string _label, Action<string,int,int> _progressCallback = null, Action _completedCallback = null) where T : Object
     {
         var asyncAllOperation = Addressables.LoadResourceLocationsAsync(_label, typeof(T));
 

@@ -3,17 +3,13 @@ using UnityEngine.AI;
 
 public abstract class Actor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    protected ActorData data;
+    
+    public abstract void Init(ActorData _data);
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public abstract void Init();
+[System.Serializable]
+public class ActorData
+{
+    public string name;
 }

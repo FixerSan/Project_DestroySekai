@@ -10,6 +10,10 @@ public class GameManager : Singleton<GameManager>
     public void Awake()
     {
         SetPathPoses();
+        Managers.Resource.LoadAsyncAll<Object>("default", _completedCallback: () => 
+        {
+            Managers.Actor.SpawnAttacker(0);
+        });
     }
 
     public void SetPathPoses()
@@ -24,6 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     public int GetEndPathIndex()
     {
+        Debug.Log(pathList.Count - 1);
         return pathList.Count - 1;
     }
 

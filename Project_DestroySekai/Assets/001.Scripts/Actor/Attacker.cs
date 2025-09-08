@@ -7,8 +7,9 @@ public class Attacker : Actor
     public Vector3 nowPathPos;
     public Vector3 moveDirection;
 
-    public override void Init()
+    public override void Init(ActorData _data)
     {
+        data = _data;
         nowPathIndex = 0;
         isEndMove = false;
         FindPath();
@@ -16,7 +17,7 @@ public class Attacker : Actor
 
     public void Awake()
     {
-        Init();
+
     }
 
     public void FindPath()
@@ -44,9 +45,12 @@ public class Attacker : Actor
     public void EndMove()
     {
         isEndMove = true;
-        if (nowPathIndex == GameManager.Instance.GetEndPathIndex()) 
+        if (nowPathIndex == GameManager.Instance.GetEndPathIndex())
+        { 
             //TODO :: 종료 기능 넣기
+            Managers.Resource.Destroy(gameObject);
             return;
+        }
         nowPathIndex++;
         FindPath();
         isEndMove = false;

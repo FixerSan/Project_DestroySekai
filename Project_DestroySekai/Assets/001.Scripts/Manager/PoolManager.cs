@@ -83,7 +83,7 @@ public class Pool
     public void Init()
     {
         GameObject poolParent = GameObject.Find("@Pool");
-        if (poolParent != null) poolParent = new GameObject("@Pool");
+        if (poolParent == null) poolParent = new GameObject("@Pool");
 
         poolTrans = new GameObject(name: poolName).transform;
         poolTrans.SetParent(poolParent.transform);
