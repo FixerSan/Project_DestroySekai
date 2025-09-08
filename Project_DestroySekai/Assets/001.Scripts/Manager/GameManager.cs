@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public List<Transform> pathList = new List<Transform>();
 
-    public void Awake()
+    public void Start()
     {
         SetPathPoses();
         Managers.Resource.LoadAsyncAll<Object>("default", _completedCallback: () => 
@@ -28,7 +28,6 @@ public class GameManager : Singleton<GameManager>
 
     public int GetEndPathIndex()
     {
-        Debug.Log(pathList.Count - 1);
         return pathList.Count - 1;
     }
 

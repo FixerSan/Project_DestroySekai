@@ -8,14 +8,15 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject go = GameObject.Find($"@{typeof(T).Name}");
-                if (go == null)
+                GameObject obj = GameObject.Find($"@{typeof(T).Name}");
+                if (obj == null)
                 {
-                    go = new GameObject($"@{typeof(T).Name}");
-                    go.AddComponent<T>();
+                    obj = new GameObject($"@{typeof(T).Name}");
+                    obj.AddComponent<T>();
+                    DontDestroyOnLoad(obj);
                 }
 
-                instance = go.GetComponent<T>();
+                instance = obj.GetComponent<T>();
             }
             return instance;
         }

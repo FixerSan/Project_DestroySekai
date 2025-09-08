@@ -7,9 +7,12 @@ public class Managers : Singleton<Managers>
     public static ResourceManager Resource { get { return Instance.resource; } }
     public static GameManager Game { get { return GameManager.Instance; } }
     public static ActorManager Actor { get { return Instance.actor; } }
+    public static SceneManager Scene { get { return Instance.scene; } }
+
 
     //매니저 변수
     private PoolManager pool = new PoolManager();
     private ResourceManager resource = new ResourceManager();
     private ActorManager actor = new ActorManager();
+    private SceneManager scene = new SceneManager();
 }
