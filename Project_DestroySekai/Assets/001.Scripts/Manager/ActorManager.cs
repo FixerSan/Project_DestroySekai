@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class ActorManager 
 {
-    public HashSet<Attacker> attackers = new HashSet<Attacker>();
+    public HashSet<AttackerController> attackers = new HashSet<AttackerController>();
+    public HashSet<TowerController> towers = new HashSet<TowerController>();
     public Transform AttackTrans
     {
         get
@@ -30,12 +31,30 @@ public class ActorManager
 
     }
 
-    public Attacker SpawnAttacker(int _index)
+    public AttackerController SpawnAttacker(int _index, Vector3 _position, Transform _parent = null)
     {
         //데이터 매니저에서 뽑았다고 치고
         ActorData data = new ActorData();
-        Attacker attacker =  Managers.Resource.Instantiate("Attacker_Test", AttackTrans, true).GetOrAddComponent<Attacker>();
+        //가라로 데이터에 값 집어 넣어놓고
+        data.name = "Attacker_Test";
+
+
+        AttackerController attacker =  Managers.Resource.Instantiate(data.name, _position, AttackTrans, true).GetOrAddComponent<AttackerController>();
         attacker.Init(data);
+        attackers.Add(attacker);
         return attacker;
+    }
+
+    public TowerController SpawnTower(int _index, Vector3 _position, Transform _parent = null)
+    {
+        //데이터 매니저에서 뽑았다 치고
+        ActorData data = new ActorData();
+        //가라로 데이터에 값 집어 넣어놓고
+        data.name = "Tower_Default";
+
+        TowerController tower = Managers.Resource.Instantiate(data.name, _position, _parent).GetOrAddComponent<TowerController>();
+        tower.Init(data);   
+        towers.Add(tower);
+        return tower;
     }
 }

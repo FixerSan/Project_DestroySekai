@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Attacker : Actor
+public class AttackerController : Actor
 {
     public int nowPathIndex;
     public bool isEndMove = false;

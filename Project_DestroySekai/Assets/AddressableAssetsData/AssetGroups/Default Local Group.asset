@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 595613b1eeed7ab49bab61549d3b9fe5
+    m_Address: Tower_Default.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 482f9ab181d801a4db08e4e79af56ad6, type: 2}
   m_SchemaSet:

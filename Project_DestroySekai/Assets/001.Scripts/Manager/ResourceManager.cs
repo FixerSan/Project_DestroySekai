@@ -80,7 +80,7 @@ public class ResourceManager
         };
     }
 
-    public GameObject Instantiate(string _key, Transform _parent = null, bool _pooling = false)
+    public GameObject Instantiate(string _key, Vector3 _position ,Transform _parent = null, bool _pooling = false)
     {
         GameObject obj = CheckLoaded<GameObject>(_key);
         if(obj == null)
@@ -93,10 +93,12 @@ public class ResourceManager
         {
             GameObject poolingObj = Managers.Pool.Get(obj);
             poolingObj.transform.SetParent(_parent);
+            poolingObj.transform.position = _position;
             return poolingObj;
         }
 
         GameObject instantiateObj = Object.Instantiate(obj, _parent);
+        instantiateObj.transform.position = _position;
         instantiateObj.name = obj.name;
         return instantiateObj;
     }

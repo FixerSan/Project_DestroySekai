@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
         SetPathPoses();
         Managers.Resource.LoadAsyncAll<Object>("default", _completedCallback: () => 
         {
-            Managers.Actor.SpawnAttacker(0);
+            Managers.Actor.SpawnAttacker(0, pathList[0].position);
         });
     }
 
