@@ -8,6 +8,7 @@ public class Managers : Singleton<Managers>
     public static GameManager Game { get { return GameManager.Instance; } }
     public static ActorManager Actor { get { return Instance.actor; } }
     public static SceneManager Scene { get { return Instance.scene; } }
+    public static TimeManager Time { get { return TimeManager.Instance; } }
 
 
     //매니저 변수

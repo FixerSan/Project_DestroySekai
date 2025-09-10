@@ -21,5 +21,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             return instance;
         }
     }
-    protected static T instance;
+    private static T instance;
 }
