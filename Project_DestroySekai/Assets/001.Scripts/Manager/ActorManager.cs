@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class ActorManager 
 {
-    public HashSet<AttackerController> attackers = new HashSet<AttackerController>();
-    public HashSet<TowerController> towers = new HashSet<TowerController>();
+    public List<AttackerController> attackers = new List<AttackerController>();
+    public List<TowerController> towers = new List<TowerController>();
     public Transform AttackTrans
     {
         get

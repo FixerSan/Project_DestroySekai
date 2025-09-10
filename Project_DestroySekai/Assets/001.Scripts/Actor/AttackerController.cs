@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackerController : Actor
+public class AttackerController : Actor, IHittable
 {
     public int nowPathIndex;
     public bool isEndMove = false;
@@ -56,7 +56,7 @@ public class AttackerController : Actor
         if (nowPathIndex == GameManager.Instance.GetEndPathIndex())
         { 
             //TODO :: 종료 기능 넣기
-            Managers.Resource.Destroy(gameObject);
+            Death();
             return;
         }
         nowPathIndex++;
@@ -64,10 +64,23 @@ public class AttackerController : Actor
         isEndMove = false;
     }
 
+    public void Death()
+    {
+        //TODO :: 종료 기능 넣기
+        Managers.Resource.Destroy(gameObject);
+    }
+
     public void Move()
     {
         if (isEndMove) return;
         transform.Translate(moveDirection.normalized * 0.1f * status.speed);
         CheckEndMove();
+    }
+
+    public void Hit(float _force)
+    {
+        status.nowHP -= _force;
+        if (status.nowHP <= 0)
+            Death();
     }
 }

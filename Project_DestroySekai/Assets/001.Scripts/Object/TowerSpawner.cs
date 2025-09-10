@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Timeline;
 
 
 public class TowerSpawner : MonoBehaviour
@@ -7,16 +8,10 @@ public class TowerSpawner : MonoBehaviour
     public Define.Tower tower;
     private Transform spawnPoint;
 
-    public void Awake()
+    public void Start()
     {
         spawnPoint = Util.FindChild<Transform>(gameObject, "SpawnPoint");
-        StartCoroutine(Test());
-    }
-
-   public IEnumerator Test()
-    {
-        yield return new WaitForSeconds(0.5f);
-        SpawnTower(Define.Tower.Default);
+        Managers.Time.AddTimer(0.3f, () => SpawnTower(Define.Tower.Default));
     }
 
     public void SpawnTower(Define.Tower _tower)

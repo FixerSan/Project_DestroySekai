@@ -17,6 +17,7 @@ public class ActorData
     public float hp;
     public float speed;
     public float attackForce;
+    public float attackSpeed;
 }
 
 public class ActorStatus
@@ -26,4 +27,5 @@ public class ActorStatus
 
     public float speed;
     public float attackForce;
+    public float attackSpeed;
 }
