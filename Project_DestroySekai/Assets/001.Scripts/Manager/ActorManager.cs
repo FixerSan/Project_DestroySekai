@@ -40,7 +40,10 @@ public class ActorManager
 
 
         AttackerController attacker =  Managers.Resource.Instantiate(data.name, _position, AttackTrans, true).GetOrAddComponent<AttackerController>();
-        attacker.Init(data);
+
+        ActorStatus status = new ActorStatus();
+
+        attacker.Init(data, status);
         attackers.Add(attacker);
         return attacker;
     }
@@ -51,9 +54,11 @@ public class ActorManager
         ActorData data = new ActorData();
         //가라로 데이터에 값 집어 넣어놓고
         data.name = "Tower_Default";
+        ActorStatus status = new ActorStatus();
+
 
         TowerController tower = Managers.Resource.Instantiate(data.name, _position, _parent).GetOrAddComponent<TowerController>();
-        tower.Init(data);   
+        tower.Init(data, status);   
         towers.Add(tower);
         return tower;
     }

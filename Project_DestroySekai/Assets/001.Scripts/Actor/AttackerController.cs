@@ -7,9 +7,17 @@ public class AttackerController : Actor
     public Vector3 nowPathPos;
     public Vector3 moveDirection;
 
-    public override void Init(ActorData _data)
+    public override void Init(ActorData _data, ActorStatus _status)
     {
         data = _data;
+        status = _status;
+
+        status.maxHP = 10f;
+        status.nowHP = status.maxHP;
+        status.speed = 1;
+        status.attackForce = 3f;
+
+
         nowPathIndex = 0;
         isEndMove = false;
         FindPath();
@@ -59,7 +67,7 @@ public class AttackerController : Actor
     public void Move()
     {
         if (isEndMove) return;
-        transform.Translate(moveDirection.normalized * 0.1f);
+        transform.Translate(moveDirection.normalized * 0.1f * status.speed);
         CheckEndMove();
     }
 }
